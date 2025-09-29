@@ -465,6 +465,8 @@ synth.prototype = {
 
 	noteOn: function(noteNumber, velocity){
 
+		console.log('synth:noteOn', noteNumber, velocity);
+
 		//Get frequency of midi note and note start time
 		var frequency = app.midiNoteToFrequency(noteNumber);
 
@@ -491,6 +493,8 @@ synth.prototype = {
 	//-------
 
 	noteOff: function(noteNumber){
+		console.log('synth:noteOff', noteNumber);
+
 		//Find which voice was assigned to this note in the log
 		if( typeof this.noteVoiceLog[noteNumber] == undefined){
 			console.log('Could not find which voice is used for note: ' + noteNumber);
