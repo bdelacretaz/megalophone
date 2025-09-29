@@ -1,0 +1,10 @@
+.mgp-info, .mgp-info a {
+  text-align: center;
+  color:white;
+  font-size: 12pt;
+}
+
+.mgp-info h1 {
+  font-size:200%;
+  padding-bottom: 0.5em;
+}
