@@ -1,0 +1,28 @@
+{
+  "name": "megalophone",
+  "version": "1.0.0",
+  "description": "An educational and live in-browser synth",
+  "homepage": "https://github.com/bdelacretaz/megalophone#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "11ty:dev": "cross-env ELEVENTY_ENV=development npx @11ty/eleventy --serve",
+    "11ty:prod": "cross-env ELEVENTY_ENV=production npx @11ty/eleventy"
+  },
+  "bugs": {
+    "url": "https://github.com/bdelacretaz/megalophone/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdelacretaz/megalophone.git"
+  },
+  "license": "Apache-2.0",
+  "author": "Bertrand Delacretaz",
+  "type": "commonjs",
+  "main": "index.js",
+  "dependencies": {
+    "eleventy": "^1.0.7"
+  },
+  "devDependencies": {
+    "cross-env": "^10.0.0"
+  }
+}
