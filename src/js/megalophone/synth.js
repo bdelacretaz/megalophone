@@ -24,7 +24,7 @@ export default class Synth {
     gain.connect(filter);
     filter.connect(ctx.destination);
 
-    for (let i = 1; i < 21; i++) {
+    for (let i = 1; i < 3; i++) {
       const osc = new OscillatorNode(ctx);
       this.#oscillators.push(osc);
       osc.type = i % 2 == 0 ? 'square': 'sawtooth';
