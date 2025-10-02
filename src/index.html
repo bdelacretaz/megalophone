@@ -5,15 +5,24 @@
 	<meta charset="UTF-8">
 	<title>Megalophone</title>
 	<meta name="description" content="An educational and live in-browser synth" />
+	<style>
+		body, button {
+			text-align: center;
+			font-size:50px;
+			padding: 0.2em;
+		}
+	</style>
 </head>
 
 <body>
 
 	<h1>Megalophone</h1>
-	<button>Play</button>
+	<button id="play" accesskey="p">Play</button>
+	<button id="stop" accesskey="s">Stop</button>
 
 	<script type="module">
 		import Megalophone from './js/megalophone/megalophone.js';
+		let playing = false;
 		function* notes() {
 			while (true) {
 				yield 110;
@@ -21,14 +30,18 @@
 				yield 110 * 1.05;
 			}
 		}
-		document.querySelector('button').addEventListener('click', async e => {
+		document.querySelector('#stop').addEventListener('click', async e => {
+			playing = false;
+		});
+		document.querySelector('#play').addEventListener('click', async e => {
+			playing = true;
 			const gen = notes();
 			const ctx = new AudioContext();
 			const periodMsec = 160;
 			const tick = function () {
 				setTimeout(() => {
 					new Megalophone(ctx).play(gen.next().value, periodMsec / 1000.0);
-					tick();
+					if(playing) tick();
 				}, periodMsec);
 			};
 			tick();
