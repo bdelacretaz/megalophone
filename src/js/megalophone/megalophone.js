@@ -10,4 +10,8 @@ export default class Megalophone {
     console.log('play',freq);
     this.#synth.play(freq, duration);
   }
+
+  setFilterFreq(freq) {
+    this.#synth.setFilterFreq(freq);
+  }
 }

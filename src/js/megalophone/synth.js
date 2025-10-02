@@ -1,5 +1,6 @@
 export default class Synth {
   #oscillators = [];
+  #filter;
   #ctx;
 
   constructor(ctx) {
@@ -7,6 +8,7 @@ export default class Synth {
     this.#ctx = ctx;
 
     const filter = new BiquadFilterNode(ctx);
+    this.#filter = filter;
     const gain = new GainNode(ctx);
 
     const lfo = new OscillatorNode(ctx);
@@ -28,15 +30,21 @@ export default class Synth {
       osc.type = i % 2 == 0 ? 'square': 'sawtooth';
       osc.frequency.setValueAtTime(440, ctx.currentTime);
       osc.detune.value = 2 * i;
+      osc.start();
       osc.connect(gain);
     }
   }
 
-  play(freq, duration) {
+  setFilterFreq(freq) {
+    this.#filter.frequency.value = Number(freq);
+  }
+
+  async play(freq, duration) {
+    await this.#ctx.resume();
     this.#oscillators.forEach(osc => {
       osc.frequency.setValueAtTime(freq, this.#ctx.currentTime);
-      osc.start(this.#ctx.currentTime);
-      osc.stop(this.#ctx.currentTime + duration);
+      // hack - need an envelope
+      osc.frequency.setValueAtTime(50000, this.#ctx.currentTime + duration);
     });
   }
 }
