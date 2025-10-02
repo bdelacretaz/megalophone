@@ -1,9 +1,9 @@
 module.exports = function (eleventyConfig) {
 
   const rawResources = [
-    "src/_images/**",
-    "src/_js/**",
-    "src/_css/**",
+    "src/images/**",
+    "src/js/**",
+    "src/css/**",
     "htaccess"
   ];
   rawResources.forEach(path => {
