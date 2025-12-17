@@ -1,5 +1,5 @@
 # Megalophone
-An educational and live in-browser synth
+An educational and live in-browser synth, for now this is a _very early stage_ work in progress.
 
 ## Local test
 
