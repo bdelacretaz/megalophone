@@ -20,7 +20,7 @@
 	<button id="play" accesskey="p">Play</button>
 	<button id="stop" accesskey="s">Stop</button>
 	<div>
-  	<label for="freq">Filter Freq</label>
+  	<label for="freq">Filter Freq</label>:
   	<input type="range" id="freq" name="freq" min="50" max="6000" />
 	</div>
 
@@ -32,6 +32,7 @@
 			while (true) {
 				yield 110;
 				yield 220;
+				yield 440;
 				yield 110 * 1.05;
 			}
 		}
